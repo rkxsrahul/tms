@@ -1,0 +1,38 @@
+#Timeout and Memory Size Options
+timeout: 360
+memorySize: 128
+# Deployment bucket name
+DeploymentBucketEnv: dev #change according to the environment
+# Networking details
+vpcDiscovery:
+  vpcName: dev
+  subnetNames:
+    - dev-private-eu-south-1a
+  securityGroupNames:
+    - dev internal_all_open
+# Environment variables
+environment:
+  TMS_DB : "/tms/dev/cluster_writer"
+  REGION_NAME : "eu-south-1"
+  COGNITO_USER_POOL_ID : "/tms/dev/man/cognito/userpoolid"
+#events/ Triggers will be added here
+events:
+  # - http: *
+# Function specific tags
+tags:
+  Environment: dev
+  Account: 196819645066
+  Product:    tms
+  Service:    lambda
+  Serverless: true
+  Contact:    sandeep@xenonstack.com ekamdeep@xenonstack.com
+################################################# GENERAL RULES FOR CONFIG FILE ######################################################
+# 1. environment name such as “dev” is used for deployment on dev.
+# 2. config-dev-{lambda-function-name}.yml will have dev
+# 3. config-stage-{lambda-function-name}.yml will have stage
+# 4. config-prod-{lambda-function-name}.yml will have prod
+# 5. Add environment variables according the lambda code that are been used.
+      # eg: REGION_NAME : “eu-south-1”, or SSM_Parameters etc
+# 6. events have to be ments to add triggers to the lambdas.
+# 7. Contact sandeep@xenonstack.com for any support.
+################################################# GENERAL RULES FOR CONFIG FILE ######################################################
